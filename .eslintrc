@@ -5,6 +5,5 @@
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
     "no-unused-expressions": 0
-  },
-  "extends": "react-app"
+  }
 }

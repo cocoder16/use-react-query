@@ -1,12 +1,15 @@
 import { useQuery, useMutation, useQueryClient, QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtoolsPanel } from "react-query/devtools";
 
+import Users from "src/components/users";
+
 function App() {
   const queryClient = new QueryClient();
 
   return (
     <QueryClientProvider client={queryClient}>
       <div>Hi</div>
+      <Users />
       <ReactQueryDevtoolsPanel
         setIsOpen={function (isOpen: boolean): void {
           throw new Error("Function not implemented.");
