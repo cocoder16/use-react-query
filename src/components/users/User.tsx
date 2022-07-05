@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useQueryClient } from "react-query";
 
-import { useGetUserById } from "src/services/users";
+import { useGetUserById } from "src/query/users";
 
 function User() {
   const [userId, setUserId] = useState<number>(1);

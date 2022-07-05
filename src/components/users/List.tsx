@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useQueryClient } from "react-query";
 
-import { useGetUsers } from "src/services/users";
+import { useGetUsers } from "src/query/users";
 
 function List() {
   const { isLoading, isError, data: users, error } = useGetUsers(); // error관리포인트
