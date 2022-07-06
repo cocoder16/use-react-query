@@ -1,24 +1,24 @@
 import { useEffect, useState } from "react";
 import { useQueryClient } from "react-query";
 
-import { useGetUserById } from "src/query/users";
+import { usersKeys, useGetUser } from "src/query/users";
 
 function User() {
   const [userId, setUserId] = useState<number>(1);
-  const { isLoading, isError, data: user, error } = useGetUserById(userId);
+  const { isLoading, isError, data: user, error } = useGetUser(userId);
   const queryClient = useQueryClient();
+
+  useEffect(() => {
+    console.log("users: ", queryClient.getQueryData(usersKeys.all()));
+    console.log("users, 1: ", queryClient.getQueryData(usersKeys.one(1)));
+    console.log("users, 2: ", queryClient.getQueryData(usersKeys.one(2)));
+  }, [queryClient, user]);
 
   const fetchFilter = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const { value } = event.target;
 
     setUserId(Number(value));
   };
-
-  useEffect(() => {
-    console.log("users: ", queryClient.getQueryData(["users"]));
-    console.log("users, 1: ", queryClient.getQueryData(["users", 1]));
-    console.log("users, 2: ", queryClient.getQueryData(["users", 2]));
-  }, [queryClient, user]);
 
   return (
     <div>

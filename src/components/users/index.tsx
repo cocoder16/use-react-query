@@ -1,10 +1,12 @@
-import List from "src/components/users/List";
+import ListPage from "src/components/users/ListPage";
+import ListInfiniteMore from "src/components/users/ListInfiniteMore";
 import User from "src/components/users/User";
 
 function Users() {
   return (
     <div>
-      <List />
+      <ListPage />
+      <ListInfiniteMore />
       <User />
     </div>
   );

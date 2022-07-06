@@ -29,6 +29,10 @@ while you certainly can do it, I don't think you should, for the following reaso
 
 - mutation update이후 네트워크 재요청을 하지 않고 react-query가 캐시하고 있는(queryKey를 사용) 데이터에 update를 반영하여 데이터를 불러온다, 이후 리렌더링
 
+## 주의할 점
+
+리렌더링할 때 refetch(api request)를 한다. 리렌더링할 떄 refetch를 막는 최적화를 해야한다.
+
 ## 사용해야할까?
 
 react-query는 server side 상태관리 라이브러리로, client side 상태관리를 대체할 수 없다. client side 상태관리 라이브러리와 같이 사용하면 그만큼 관리포인트가 늘어난다. 전역상태를 리덕스 스토어에서만 가져올 수 있다는 규칙이 깨지고 아키텍처가 복잡해진다.
