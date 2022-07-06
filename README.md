@@ -2,14 +2,14 @@
 
 ## 체크사항
 
-- devtools 컴포넌트 불편 - 에러시 DOM 못그리면 사라짐
+- [ ] devtools 컴포넌트 불편 - 에러시 DOM 못그리면 사라짐
 - [x] useQuery - 질의하는 메서드에 데이터 접근가능한 변수가 종속되어 있다. redux는 state 접근과 action dispatch가 분리되어있어서 편한데.
   - => queryClient.getQueryData(queryKey); 질의없이 캐시된 데이터에 접근하는 메서드
-- server side state type 선언 - axios 선언 - query-keys 선언 - react query hook 메서드 선언 - 컴포넌트 레이어에서 사용 => 깔끔한 구조 정리
+- [ ] server side state type 선언 - axios 선언 - query-keys 선언 - react query hook 메서드 선언 - 컴포넌트 레이어에서 사용 -> 깔끔한 구조 정리
 - [x] query keys 우아한 사용법
   - => factory https://tkdodo.eu/blog/effective-react-query-keys#use-query-key-factories
-- 페이징, 필터 구현해보기
-- CRUD 구현해서 캐싱확인하기 (to do list)
+- [ ] 페이징, 필터 구현해보기
+- [ ] CRUD 구현해서 캐싱확인하기 (to do list)
 - [x] axios 빼고 써보기, 말이 server side state management지 client side state manage도 가능하지 않을까, 그리고 state 관리 라이브러리를 통일하는게 관리포인트가 줄어서 더 좋지않을까
   - => client side state를 react-query로 관리하면 안좋은 이유 https://github.com/TanStack/query/discussions/2852
 
@@ -31,7 +31,7 @@ while you certainly can do it, I don't think you should, for the following reaso
 
 ## 주의할 점
 
-리렌더링할 때 refetch(api request)를 한다. 리렌더링할 떄 refetch를 막는 최적화를 해야한다.
+refetch(api request)를 하는 경우들이 잦다. refetch를 막는 최적화를 이것저것 해야한다. (아직 모든 것을 파악 못함)
 
 ## 사용해야할까?
 
