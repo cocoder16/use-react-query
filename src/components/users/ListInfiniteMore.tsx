@@ -1,7 +1,7 @@
 import { useGetInfiniteUsers } from "src/query/users";
 
 function ListInfiniteMore() {
-  const { isLoading, isError, error, data: users, hasNextPage, fetchNextPage } = useGetInfiniteUsers();
+  const { isLoading, isError, error, data: users, hasNextPage, fetchNextPage } = useGetInfiniteUsers(); // TODO: 두번 요청
 
   const loadMore = () => {
     console.log("hasNextPage: ", hasNextPage);

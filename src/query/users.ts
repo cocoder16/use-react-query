@@ -28,7 +28,7 @@ export const usersKeys = {
   one: (id: number) => [...usersKeys.all(), "id", id],
 };
 
-export const useGetUsersByPage = (page: number) => {
+export const useGetUsersByPage = (page: number = 1) => {
   return useQuery<User[], Error>(usersKeys.page(page), async () => {
     const {
       data: { data },
@@ -57,10 +57,16 @@ export const useGetInfiniteUsers = () => {
 };
 
 export const useGetUser = (id: number) => {
-  return useQuery<User, Error>(usersKeys.one(id), async () => {
-    const {
-      data: { data },
-    } = await getUser(id);
-    return data;
-  });
+  return useQuery<User, Error>(
+    usersKeys.one(id),
+    async () => {
+      const {
+        data: { data },
+      } = await getUser(id);
+      return data;
+    },
+    {
+      enabled: !!id, // id가 있어야만 쿼리 실행을 함 dependent query
+    },
+  );
 };

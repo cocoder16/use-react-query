@@ -29,15 +29,23 @@ while you certainly can do it, I don't think you should, for the following reaso
 
 - pagination, load more(infinity scroll) 구현 편리함
 
+### lazy query
+
+dependent query로 구현
+
 ### invalidate
 
 - mutation update이후 네트워크 재요청을 하지 않고 react-query가 캐시하고 있는(queryKey를 사용) 데이터에 update를 반영하여 데이터를 불러온다, 이후 리렌더링
 
 ## 주의할 점
 
-refetch(api request)를 하는 경우들이 잦다. refetch를 막는 최적화를 이것저것 해야한다. (아직 모든 것을 파악 못함)
+1. refetch(api request)를 하는 경우들이 잦다. refetch를 막는 최적화를 이것저것 해야한다. (아직 모든 것을 파악 못함)
+2. 기본 config 설정으로 지원하는 기능들이 많다. (retry, refetch 등등) 이런 설정들에 대해 미리 다 파악하고 있어야 예상치 못한 시나리오를 막을 수 있다. <br />
+   (처음에 사용하기 쉽지는 않다.)
 
 ## 사용해야할까?
+
+### 상태관리 라이브러리 대체?
 
 react-query는 server side 상태관리 라이브러리로, client side 상태관리를 대체할 수 없다. client side 상태관리 라이브러리와 같이 사용하면 그만큼 관리포인트가 늘어난다. 전역상태를 리덕스 스토어에서만 가져올 수 있다는 규칙이 깨지고 아키텍처가 복잡해진다.
 
