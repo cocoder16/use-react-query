@@ -2,6 +2,7 @@ import { useQuery, useMutation, useQueryClient, QueryClient, QueryClientProvider
 import { ReactQueryDevtoolsPanel } from "react-query/devtools";
 
 import Users from "src/components/users";
+import ToDos from "src/components/todos";
 
 function App() {
   const queryClient = new QueryClient({
@@ -16,6 +17,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <div>Hi</div>
       <Users />
+      <ToDos />
       <ReactQueryDevtoolsPanel
         setIsOpen={function (isOpen: boolean): void {
           throw new Error("Function not implemented.");
