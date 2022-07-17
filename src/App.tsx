@@ -1,20 +1,13 @@
-import { useQuery, useMutation, useQueryClient, QueryClient, QueryClientProvider } from "react-query";
+import { QueryClientProvider } from "react-query";
 import { ReactQueryDevtoolsPanel } from "react-query/devtools";
 
+import createQueryClient from "src/config/queryClient";
 import Users from "src/components/users";
 import ToDos from "src/components/todos";
 
 function App() {
-  const queryClient = new QueryClient({
-    defaultOptions: {
-      queries: {
-        refetchOnWindowFocus: false,
-      },
-    },
-  });
-
   return (
-    <QueryClientProvider client={queryClient}>
+    <QueryClientProvider client={createQueryClient()}>
       <div>Hi</div>
       <Users />
       <ToDos />

@@ -2,21 +2,23 @@ import { useQuery } from "react-query";
 
 import { getTodos } from "src/services/todos";
 
-const initialData = [
-  {
-    id: 0,
-    content: "js",
-    done: true,
-  },
-  {
-    id: 1,
-    content: "css",
-    done: false,
-  },
-];
-
 export const todosKeys = {
   all: () => ["todos"],
+};
+
+export const initialData = {
+  all: [
+    {
+      id: 0,
+      content: "js",
+      done: true,
+    },
+    {
+      id: 1,
+      content: "css",
+      done: false,
+    },
+  ],
 };
 
 export const useGetTodos = () => {
@@ -29,7 +31,7 @@ export const useGetTodos = () => {
       return data;
     },
     {
-      initialData,
+      initialData: initialData.all,
     },
   );
 };

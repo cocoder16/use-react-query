@@ -2,10 +2,15 @@
 
 ## 체크사항
 
-- [ ] devtools 컴포넌트 불편 - 에러시 DOM 못그리면 사라짐
+- [x] devtools 컴포넌트 DOM 트리에 포함되어있어 불편 - 에러시 DOM 못그리면 사라짐
 - [x] useQuery - 질의하는 메서드에 데이터 접근가능한 변수가 종속되어 있다. redux는 state 접근과 action dispatch가 분리되어있어서 편한데.
   - => queryClient.getQueryData(queryKey); 질의없이 캐시된 데이터에 접근하는 메서드
-- [ ] server side state type 선언 - axios 선언 - query-keys 선언 - react query hook 메서드 선언 - 컴포넌트 레이어에서 사용 -> 깔끔한 구조 정리
+- [x] server side state type 선언 - axios 선언 - query-keys 선언 - react query hook 메서드 선언 - 컴포넌트 레이어에서 사용 -> 깔끔한 구조 정리
+  - => Provider( UI(hooks 사용) <- hooks <- queryKey, query function, options function, initial data ) <- types
+- [ ] test
+  - setUp: Provider
+  - UI: BDD
+  - hooks: query 실행후 cache data를 비교하는 테스트
 - [x] query keys 우아한 사용법
   - => factory https://tkdodo.eu/blog/effective-react-query-keys#use-query-key-factories
 - [x] 페이징, 필터 구현해보기
@@ -56,3 +61,5 @@ mutation이 성공되었다고 치고 UI를 먼저 반영하는 업데이트. �
 react-query는 server side 상태관리 라이브러리로, client side 상태관리를 대체할 수 없다. client side 상태관리 라이브러리와 같이 사용하면 그만큼 관리포인트가 늘어난다. 전역상태를 리덕스 스토어에서만 가져올 수 있다는 규칙이 깨지고 아키텍처가 복잡해진다.
 
 msa를 할 때, 일부 서비스에서는 client side 상태관리를 하지 않는다면, react-query를 사용하면 이점이 있을 수 있다.
+
+하나의 도메인에 대해 client side state와 server side state 모두 관리가 필요한 경우, 데이터 저장 계층을 분산하기보다는 하나의 상태관리 라이브러리를 사용하는 것이 낫다.
