@@ -2,12 +2,6 @@ import { useQuery } from "react-query";
 
 import { getTodos } from "src/services/todos";
 
-type ToDo = {
-  id: number;
-  content: string;
-  done: boolean;
-};
-
 const initialData = [
   {
     id: 0,
@@ -25,7 +19,7 @@ export const todosKeys = {
   all: () => ["todos"],
 };
 
-export const useGetToDos = () => {
+export const useGetTodos = () => {
   return useQuery<ToDo[], Error>(
     todosKeys.all(),
     async () => {

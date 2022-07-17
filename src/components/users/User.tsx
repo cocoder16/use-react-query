@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { useQueryClient } from "react-query";
 
-import { usersKeys, useGetUser } from "src/query/users";
+import { usersKeys, useGetUser, usePostMember } from "src/query/users";
 
 function User() {
   const [userId, setUserId] = useState<number>(1);
   const { isLoading, isError, data: user, error } = useGetUser(userId);
+  const mutation = usePostMember();
   const queryClient = useQueryClient();
 
   useEffect(() => {
@@ -20,8 +21,16 @@ function User() {
     setUserId(Number(value));
   };
 
+  const addMember = (event: React.MouseEvent<HTMLButtonElement>) => {
+    mutation.mutate({
+      name: "John",
+      job: "developer",
+    });
+  };
+
   return (
     <div>
+      <button onClick={addMember}>add member</button>
       <select onChange={fetchFilter}>
         <option value="1" defaultChecked>
           1

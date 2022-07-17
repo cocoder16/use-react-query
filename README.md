@@ -9,7 +9,7 @@
 - [x] query keys 우아한 사용법
   - => factory https://tkdodo.eu/blog/effective-react-query-keys#use-query-key-factories
 - [x] 페이징, 필터 구현해보기
-- [ ] CRUD 구현해서 캐싱확인하기 (to do list)
+- [x] 캐싱확인하기
 - [x] axios 빼고 써보기, 말이 server side state management지 client side state manage도 가능하지 않을까, 그리고 state 관리 라이브러리를 통일하는게 관리포인트가 줄어서 더 좋지않을까
   - => client side state를 react-query로 관리하면 안좋은 이유 https://github.com/TanStack/query/discussions/2852
 
@@ -35,13 +35,19 @@ dependent query로 구현
 
 ### invalidate
 
-- mutation update이후 네트워크 재요청을 하지 않고 react-query가 캐시하고 있는(queryKey를 사용) 데이터에 update를 반영하여 데이터를 불러온다, 이후 리렌더링
+- query를 refetch한다.
+- 주로 mutation onSuccess에서 사용한다.
+
+### optimistic update
+
+mutation이 성공되었다고 치고 UI를 먼저 반영하는 업데이트. 만약 mutation 실패하면 onError에서 롤백한다.
 
 ## 주의할 점
 
 1. refetch(api request)를 하는 경우들이 잦다. refetch를 막는 최적화를 이것저것 해야한다. (아직 모든 것을 파악 못함)
 2. 기본 config 설정으로 지원하는 기능들이 많다. (retry, refetch 등등) 이런 설정들에 대해 미리 다 파악하고 있어야 예상치 못한 시나리오를 막을 수 있다. <br />
    (처음에 사용하기 쉽지는 않다.)
+3. InfiniteData는 독자적인 자료구조를 가지기 때문에, 같은 도메인 같은 데이터를 다른 자료구조로 중복 저장 및 관리할 여지가 생긴다.
 
 ## 사용해야할까?
 
